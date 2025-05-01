@@ -62,7 +62,7 @@ app.use(cors({
 app.post("/send-data", async (req, res) => {
     try {
         const { name, email, subject, message } = req.body;
-        
+        console.log(req.body);
         const emailContent = `
             Subject: Connection from your Portfolio!
             Name: ${name}
@@ -70,7 +70,7 @@ app.post("/send-data", async (req, res) => {
             Subject: ${subject}
             Message: ${message}
         `;
-
+         console.log(emailContent);
         await sendEmail({ 
             to: "bhartikeshav527@gmail.com",
             subject: `Portfolio Contact: ${subject}`,
