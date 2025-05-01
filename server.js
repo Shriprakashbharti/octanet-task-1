@@ -173,8 +173,36 @@ app.post("/donate-food",  async(req,res)=>{
     }
 });
 
+const cors = require('cors');
+app.use(cors({
+    origin: 'https://shriprakashbharti.github.io',
+    methods: ['POST']
+}));
 
+app.post("/send-data", async (req, res) => {
+    try {
+        const { name, email, subject, message } = req.body;
+        
+        const emailContent = `
+            Subject: Connection from your Portfolio!
+            Name: ${name}
+            Email: ${email}
+            Subject: ${subject}
+            Message: ${message}
+        `;
 
+        await sendEmail({ 
+            to: "bhartikeshav527@gmail.com",
+            subject: `Portfolio Contact: ${subject}`,
+            message: emailContent
+        });
+
+        res.status(200).json({ success: true, message: "Email sent successfully" });
+    } catch(err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: "Failed to send email" });
+    }
+});
 app.get("/admin",(req,res)=>{
     res.render("login.ejs");
 });
