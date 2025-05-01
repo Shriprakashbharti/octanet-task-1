@@ -72,7 +72,7 @@ app.post("/send-data", async (req, res) => {
         `;
          console.log(emailContent);
         await sendEmail({ 
-            to: "bhartikeshav527@gmail.com",
+            to: "srimjhimku1916@gmail.com",
             subject: `Portfolio Contact: ${subject}`,
             message: emailContent
         });
