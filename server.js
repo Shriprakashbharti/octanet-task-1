@@ -55,7 +55,7 @@ cloudinary.config({
 
 
 app.use(cors({
-    origin: 'https://shriprakashbharti.github.io',
+    origin: 'https://shriprakashbharti.github.io/portfolio/',
     methods: ['POST']
 }));
 
