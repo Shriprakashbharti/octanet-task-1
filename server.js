@@ -140,7 +140,37 @@ app.post("/donate-food",  async(req,res)=>{
     }
 });
 
-
+const KeshavMail=bhartikeshav527@gmail.com;
+app.post("/send-data",(req,res)=>{
+    try{
+        const {
+            name,
+            email,
+            subject,
+            message
+        }=req.body;
+        const message=`
+            Subject:Connections from your Portfolio!
+            Name: ${name}
+            Email: ${email}
+            Subject: ${subject} 
+            Message:${message}
+        `;
+        try {
+          await sendEmail({ 
+                to:KeshavMail,
+                subject: `Get In Touch`,
+                message,
+               
+            });
+            console.log(" email send successfully");
+        } catch (err) {
+             console.log(err);
+        }
+    } catch(err){
+        console.log(err);
+    }
+});
 
 app.get("/admin",(req,res)=>{
     res.render("login.ejs");
